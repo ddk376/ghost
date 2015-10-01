@@ -10,6 +10,7 @@ class Ghost
   MAX_LOSS_COUNT = 5
 
   def initialize(players, dictionary_file_name)
+    debugger
     @players = players.map {|player| Player.new(player)}
     @dictionary = Set.new(File.readlines(dictionary_file_name).map(&:chomp))
     @fragment = ""
@@ -103,7 +104,15 @@ end
 
 
 if __FILE__ == $PROGRAM_NAME
-  players = ["Derek", "Gina"]
+  players = []
+  count = 0
+  loop do
+    puts "Put a player name and press enter (Newline to end)"
+    input = gets.chomp
+    players << input if input != ''
+    count += 1
+    break if input == '' && count >= 2
+  end
   file_name = "dictionary.txt"
   game = Ghost.new(players, file_name)
   game.run
