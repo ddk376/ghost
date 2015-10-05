@@ -6,4 +6,7 @@
  ```
 
 # Features
-Supports multiplayers 
+Supports multiplayers
+
+# TODO
+AI player
